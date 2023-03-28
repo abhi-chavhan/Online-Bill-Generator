@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <!-- <body background="C:\Users\hp\Pictures\Shri Krishna\Images\WhatsApp Image 2022-06-15 at 10.29.32 PM (1).jpeg"> -->
+    </body>
+    <h1>Hare Krishna</h1>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="part1">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    Full Name: <input type="text" id="name" /> <br />
+
+                    Your Email: <input type="text" id="email" /><br />
+                    Your Mobile: <input type="text" id="mobile" /><br />
+                </fieldset>
+            </div>
+
+            <div class="part2">
+                <fieldset>
+                    <legend>Your Orders</legend>
+                    Smosa (Rs. 10): <input type="text" id="smosa" /> <br />
+                    Kachori (Rs. 12): <input type="text" id="kachori" /><br />
+                    Vadapav (Rs. 60): <input type="text" id="vadapav" /><br />
+                    Maggi (Rs. 50): <input type="text" id="maggi" /><br />
+                    Dosa (Rs. 60): <input type="text" id="Dosa" /> <br />
+                    Aluparata (Rs. 70): <input type="text" id="Aluparata" /><br />
+                    Khichadi (Rs. 20): <input type="text" id="Khichadi" /><br />
+                    Puranpoli (Rs. 80): <input type="text" id="Puranpoli" /><br />
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="container">
+            <fieldset>
+                <legend>Your Bill</legend>
+                <h3>Your Name:<span id="name2"></span></h3>
+                <h3>Email: <span id="email2"></span></h3>
+                <h3>Mobile: <span id="mobile2"></span></h3>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Menu</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amout</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bill">
+                        <tr>
+                            <td>Smosa</td>
+                            <td>Rs. 10</td>
+                            <td>1</td>
+                            <td>10x1 = 10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <h2>Total Amout: Rs. <span id="amount">0</span></h2>
+           
+        </div>
+        
+    </div>
+    
+
+
+    <style>
+       
+        body {
+            background-image: repeating-linear-gradient();
+        }
+
+        h1 {
+            color: red;
+            text-align: center;
+        }
+
+        h1:hover,
+        h3:hover,
+        h2:hover, legend:hover, th:hover, fieldset:hover {
+            color: aqua;
+            cursor: pointer;
+        }
+
+        h3 {
+            color: black;
+            text-decoration-style: bold;
+        }
+
+        h2 {
+            display: flex;
+            align-items: end;
+            text-align: end;
+        }
+
+        div {
+            display: contents;
+            align-items: center;
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+    <script>
+        var Smosa = 10,
+            Kachori = 12,
+            Vadapav = 60,
+            Maggi = 50,
+            Dosa = 60,
+            Aluparata = 70,
+            Khichadi = 20,
+            Puranpoli = 80;
+
+        var smosa_quantity = 0,
+            kachori_quantity = 0,
+            vadapav_quantity = 0,
+            maggi_quantity = 0,
+            Dosa_quantity = 0,
+            Aluparata_quantity = 0,
+            Khichadi_quantity = 0,
+            Puranpoli_quantity = 0;
+
+        var name = "",
+            email = "";
+
+        var smosaBill = "",
+            kachoriBill = "",
+            vadapavBill = "",
+            maggiBill = "",
+            DosaBill = "",
+            AluparataBill = "",
+            KhichadiBill = "",
+            PuranpoliBill = "";
+
+        var total_amount = 0;
+        document.getElementById("name").addEventListener("keyup", function () {
+            document.getElementById("name2").innerHTML = this.value;
+        });
+
+        document.getElementById("email").addEventListener("keyup", function () {
+            document.getElementById("email2").innerHTML = this.value;
+        });
+
+        document.getElementById("mobile").addEventListener("keyup", function () {
+            document.getElementById("mobile2").innerHTML = this.value;
+        });
+
+        document.getElementById("smosa").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                smosaBill = "";
+                smosa_quantity = 0;
+                showBill();
+            } else {
+                smosa_quantity = this.value;
+                smosaBill = "<tr><td>Smosa</td><td>Rs. " + Smosa + "</td><td>" + smosa_quantity + "</td><td>" + Smosa + "x" + smosa_quantity + " = " + Smosa * smosa_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+        document.getElementById("kachori").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                kachoriBill = "";
+                kachori_quantity = 0;
+                showBill();
+            } else {
+                kachori_quantity = this.value;
+                kachoriBill = "<tr><td>Kachori</td><td>Rs. " + Kachori + "</td><td>" + kachori_quantity + "</td><td>" + Kachori + "x" + kachori_quantity + " = " + Kachori * kachori_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+        document.getElementById("vadapav").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                vadapavBill = "";
+                vadapav_quantity = 0;
+                showBill();
+            } else {
+                vadapav_quantity = this.value;
+                vadapavBill = "<tr><td>Vadapav</td><td>Rs. " + Vadapav + "</td><td>" + vadapav_quantity + "</td><td>" + Vadapav + "x" + vadapav_quantity + " = " + Vadapav * vadapav_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+        document.getElementById("maggi").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                maggiBill = "";
+                maggi_quantity = 0;
+                showBill();
+            } else {
+                maggi_quantity = this.value;
+                maggiBill = "<tr><td>Maggi</td><td>Rs. " + Maggi + "</td><td>" + maggi_quantity + "</td><td>" + Vadapav + "x" + maggi_quantity + " = " + Maggi * maggi_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+
+        document.getElementById("Dosa").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                DosaBill = "";
+                Dosa_quantity = 0;
+                showBill();
+            } else {
+                Dosa_quantity = this.value;
+                DosaBill = "<tr><td>Dosa</td><td>Rs. " + Dosa + "</td><td>" + Dosa_quantity + "</td><td>" + Dosa + "x" + Dosa_quantity + " = " + Dosa * Dosa_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+
+        document.getElementById("Aluparata").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                AluparataBill = "";
+                Aluparata_quantity = 0;
+                showBill();
+            } else {
+                Aluparata_quantity = this.value;
+                AluparataBill = "<tr><td>Aluparata</td><td>Rs. " + Aluparata + "</td><td>" + Aluparata_quantity + "</td><td>" + Aluparata + "x" + Aluparata_quantity + " = " + Aluparata * Aluparata_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+
+        document.getElementById("Khichadi").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                KhichadiBill = "";
+                Khichadi_quantity = 0;
+                showBill();
+            } else {
+                Khichadi_quantity = this.value;
+                KhichadiBill = "<tr><td>Khichadi</td><td>Rs. " + Khichadi + "</td><td>" + Khichadi_quantity + "</td><td>" + Khichadi + "x" + Khichadi_quantity + " = " + Khichadi * Khichadi_quantity + "</td></tr>";
+                showBill();
+            }
+        });
+
+
+        document.getElementById("Khichadi").addEventListener("keyup", function () {
+            if (this.value == "" || this.value == 0) {
+                KhichadiBill = "";
+                Khichadi_quantity = 0;
+                showBill();
+            } else {
+                Khichadi_quantity = this.value;
+                KhichadiBill = "<tr><td>Khichadi</td><td>Rs. " + Puranpoli + "</td><td>" + Khichadi_quantity + "</td><td>" + Puranpoli + "x" + Khichadi_quantity + " = " + Puranpoli * Khichadi_quantity + "</td></tr>";
+                showBill();
+            }
+        }); Puranpoli
+
+
+
+
+
+
+
+
+
+
+
+        function showBill() {
+            document.getElementById("bill").innerHTML = smosaBill + kachoriBill + vadapavBill + maggiBill + DosaBill + AluparataBill + KhichadiBill + PuranpoliBill;
+            document.getElementById("amount").innerHTML = Smosa * smosa_quantity + Kachori * kachori_quantity + Vadapav * vadapav_quantity + Maggi * maggi_quantity + Dosa * Dosa_quantity + Aluparata * Aluparata_quantity + Khichadi * Khichadi_quantity + Puranpoli * Puranpoli_quantity;
+        }
+    </script>
+</body>
+
+</html>
